@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
 version: '3'
 
 tasks:
@@ -63,19 +64,9 @@ tasks:
     desc: Lint Taskfiles
     sources:
       - ./**/Taskfile.yml
-      - ./**/taskfile.yml
-      - ./**/Taskfile.yaml
-      - ./**/taskfile.yaml
-      - ./**/Taskfile.dist.yml
-      - ./**/taskfile.dist.yml
-      - ./**/Taskfile.dist.yaml
-      - ./**/taskfile.dist.yaml
       - ./**/*.taskfile.yml
-      - ./**/*.taskfile.yaml
       - ./.taskfiles/*.yml
-      - ./.taskfiles/*.yaml
       - ./taskfiles/*.yml
-      - ./taskfiles/*.yaml
     cmds:
       - for: sources
         cmd: yamlfmt -lint {{.ITEM}}
