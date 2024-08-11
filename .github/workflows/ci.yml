@@ -3,6 +3,8 @@ name: CI
 on:
   pull_request:
     branches: [main]
+  push:
+    branches: [main]
   workflow_call:
   workflow_dispatch:
 
@@ -25,6 +27,7 @@ jobs:
           /home/linuxbrew/.linuxbrew/bin/brew install \
             actionlint \
             check-jsonschema \
+            fd \
             go-task \
             jq \
             prettier \
