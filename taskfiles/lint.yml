@@ -38,8 +38,8 @@ tasks:
     sources:
       - ./**/*.json
     cmds:
-      - fd --hidden --type file --extension json | xargs jq empty
-      - fd --hidden --type file --extension json | xargs prettier --check --parser json
+      - fd --hidden --type file --extension json | xargs --no-run-if-empty jq empty
+      - fd --hidden --type file --extension json | xargs --no-run-if-empty prettier --check --parser json
 
   renovate:
     desc: Lint Renovate configuration
@@ -57,8 +57,8 @@ tasks:
       - ./.githooks/commit-msg
       - ./.githooks/pre-commit
     cmds:
-      - fd --hidden --type file --extension sh | xargs shfmt --diff
-      - fd --hidden --type file --extension sh | xargs shellcheck
+      - fd --hidden --type file --extension sh | xargs --no-run-if-empty shfmt --diff
+      - fd --hidden --type file --extension sh | xargs --no-run-if-empty shellcheck
 
   taskfile:
     desc: Lint Taskfiles

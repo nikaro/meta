@@ -25,14 +25,14 @@ tasks:
     sources:
       - ./**/*.json
     cmds:
-      - fd --hidden --type file --extension json | xargs prettier --write --parser json
+      - fd --hidden --type file --extension json | xargs --no-run-if-empty prettier --write --parser json
 
   sh:
     desc: Format sh/bash files
     sources:
       - ./**/*.sh
     cmds:
-      - fd --hidden --type file --extension sh | xargs shfmt --write
+      - fd --hidden --type file --extension sh | xargs --no-run-if-empty shfmt --write
 
   yaml:
     desc: Format YAML files
