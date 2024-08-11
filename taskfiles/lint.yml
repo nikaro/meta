@@ -6,9 +6,11 @@ tasks:
     desc: Run linters
     cmds:
       - task: gha
+      - task: githooks
       - task: json
       - task: renovate
       - task: sh
+      - task: taskfile
       - task: yaml
 
   gha:
@@ -19,22 +21,33 @@ tasks:
       - check-jsonschema --builtin-schema vendor.github-workflows ./.github/workflows/*.yml
       - actionlint
 
+  githooks:
+    desc: Lint sh/bash files
+    sources:
+      - ./.githooks/commit-msg
+      - ./.githooks/pre-commit
+    cmds:
+      - for: sources
+        cmd: shfmt --diff {{.ITEM}}
+      - for: sources
+        cmd: shellcheck {{.ITEM}}
+
   json:
     desc: Lint JSON files
     sources:
       - ./**/*.json
     cmds:
-      - for: sources
-        cmd: jq empty {{.ITEM}}
-      - for: sources
-        cmd: prettier --check --parser json {{.ITEM}}
+      - fd --hidden --type file --extension json | xargs jq empty
+      - fd --hidden --type file --extension json | xargs prettier --check --parser json
 
   renovate:
     desc: Lint Renovate configuration
     sources:
       - ./.github/renovate*.json
+      - ./**/renovate_preset.json
     cmds:
-      - check-jsonschema --builtin-schema vendor.renovate ./.github/renovate*.json
+      - for: sources
+        cmd: check-jsonschema --builtin-schema vendor.renovate {{.ITEM}}
 
   sh:
     desc: Lint sh/bash files
@@ -43,9 +56,33 @@ tasks:
       - ./.githooks/commit-msg
       - ./.githooks/pre-commit
     cmds:
-      - shfmt --diff .
+      - fd --hidden --type file --extension sh | xargs shfmt --diff
+      - fd --hidden --type file --extension sh | xargs shellcheck
+
+  taskfile:
+    desc: Lint Taskfiles
+    sources:
+      - ./**/Taskfile.yml
+      - ./**/taskfile.yml
+      - ./**/Taskfile.yaml
+      - ./**/taskfile.yaml
+      - ./**/Taskfile.dist.yml
+      - ./**/taskfile.dist.yml
+      - ./**/Taskfile.dist.yaml
+      - ./**/taskfile.dist.yaml
+      - ./**/*.taskfile.yml
+      - ./**/*.taskfile.yaml
+      - ./.taskfiles/*.yml
+      - ./.taskfiles/*.yaml
+      - ./taskfiles/*.yml
+      - ./taskfiles/*.yaml
+    cmds:
       - for: sources
-        cmd: shellcheck {{.ITEM}}
+        cmd: yamlfmt -lint {{.ITEM}}
+      - for: sources
+        cmd: yamllint {{.ITEM}}
+      - for: sources
+        cmd: check-jsonschema --builtin-schema vendor.taskfile {{.ITEM}}
 
   yaml:
     desc: Lint YAML files

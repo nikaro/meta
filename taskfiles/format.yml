@@ -4,27 +4,34 @@ tasks:
   default:
     label: format
     desc: Run formatters
-    deps:
-      - json
-      - sh
-      - yaml
+    cmds:
+      - task: githooks
+      - task: json
+      - task: sh
+      - task: yaml
+
+  githooks:
+    desc: Format githooks files
+    sources:
+      - ./.githooks/commit-msg
+      - ./.githooks/pre-commit
+    cmds:
+      - for: sources
+        cmd: shfmt {{.ITEM}}
 
   json:
     desc: Format JSON files
     sources:
       - ./**/*.json
     cmds:
-      - for: sources
-        cmd: prettier --write --parser json {{.ITEM}}
+      - fd --hidden --type file --extension json | xargs prettier --write --parser json
 
   sh:
     desc: Format sh/bash files
     sources:
       - ./**/*.sh
-      - ./.githooks/commit-msg
-      - ./.githooks/pre-commit
     cmds:
-      - shfmt --write .
+      - fd --hidden --type file --extension sh | xargs shfmt --write
 
   yaml:
     desc: Format YAML files
