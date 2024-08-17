@@ -19,7 +19,10 @@ jobs:
       contents: read
     steps:
       - name: Checkout
-        uses: actions/checkout@main
+        env:
+          BRANCH: ${{ github.head_ref || github.ref_name }}
+          GH_TOKEN: ${{ github.token }}
+        run: gh repo clone ${{ github.repository }} ${{ github.workspace }} -- --depth=1 --branch "$BRANCH"
 
       - name: Install tools
         run: |
