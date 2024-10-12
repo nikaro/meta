@@ -1,0 +1,21 @@
+{
+  "dryRun": "full",
+  "gitAuthor": "github-actions[bot] <github-actions[bot]@users.noreply.github.com>",
+  "onboarding": false,
+  "platform": "github",
+  "repositories": [
+    "nikaro/actions",
+    "nikaro/blog",
+    "nikaro/containers",
+    "nikaro/goresume",
+    "nikaro/infra",
+    "nikaro/meta",
+    "nikaro/neverwin",
+    "nikaro/resume",
+    "nikaro/sopsy",
+    "nikaro/supwatch",
+    "nikaro/wirelogd",
+    "nikaro/zabbixmond"
+  ],
+  "requireConfig": false
+}
