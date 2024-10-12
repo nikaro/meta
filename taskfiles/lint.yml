@@ -48,6 +48,8 @@ tasks:
     desc: Lint Renovate configuration
     sources:
       - ./.github/renovate*.json
+      - ./**/renovate/config.json
+      - ./**/renovate/preset.json
       - ./**/renovate_preset.json
     cmds:
       - for: sources
