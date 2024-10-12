@@ -1,6 +1,5 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "dryRun": "full",
   "extends": ["github>nikaro/meta//renovate/preset"],
   "gitAuthor": "github-actions[bot] <github-actions[bot]@users.noreply.github.com>",
   "onboarding": false,
