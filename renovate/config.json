@@ -16,7 +16,7 @@
     "nikaro/sopsy",
     "nikaro/supwatch",
     "nikaro/wirelogd",
-    "nikaro/zabbixmond"
+    "nikaro/zabbixmon"
   ],
   "requireConfig": "optional"
 }
