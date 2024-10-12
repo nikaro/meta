@@ -17,5 +17,5 @@
     "nikaro/wirelogd",
     "nikaro/zabbixmond"
   ],
-  "requireConfig": false
+  "requireConfig": "optional"
 }
