@@ -4,9 +4,11 @@
   "assigneesFromCodeOwners": true,
   "extends": [
     "config:recommended",
-    "regexManagers:dockerfileVersions",
-    "regexManagers:githubActionsVersions",
+    "customManagers:dockerfileVersions",
+    "customManagers:githubActionsVersions",
     "schedule:weekly",
+    ":configMigration",
+    ":disableDependencyDashboard",
     ":disableRateLimiting",
     ":enablePreCommit",
     ":maintainLockFilesWeekly",
