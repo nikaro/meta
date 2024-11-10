@@ -74,7 +74,7 @@ tasks:
       - ./taskfiles/*.yml
     cmds:
       - for: sources
-        cmd: yamlfmt -lint {{.ITEM}}
+        cmd: prettier --check {{.ITEM}}
       - for: sources
         cmd: yamllint {{.ITEM}}
       - for: sources
@@ -86,5 +86,5 @@ tasks:
       - ./**/*.yml
       - ./**/*.yaml
     cmds:
-      - yamlfmt -lint .
-      - yamllint .
+      - fd --hidden --extension yaml --extension yml | xargs --no-run-if-empty prettier --check --parser yaml
+      - fd --hidden --extension yaml --extension yml | xargs --no-run-if-empty yamllint

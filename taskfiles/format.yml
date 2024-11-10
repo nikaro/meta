@@ -43,4 +43,4 @@ tasks:
       - ./**/*.yml
       - ./**/*.yaml
     cmds:
-      - yamlfmt .
+      - fd --hidden --extension yaml --extension yml | xargs --no-run-if-empty prettier --write --parser yaml
