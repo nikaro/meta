@@ -21,7 +21,7 @@ tasks:
       - ./.githooks/pre-commit
     cmds:
       - for: sources
-        cmd: shfmt {{.ITEM}}
+        cmd: shfmt --write {{.ITEM}}
 
   json:
     desc: Format JSON files
