@@ -43,16 +43,26 @@
   "customManagers": [
     {
       "customType": "regex",
+      "fileMatch": [
+        "/defaults/main\\.ya?ml$",
+        "/(host|group)_vars/\\w+\\.ya?ml$"
+      ],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)(?: packageName=(?<packageName>.+?))?(?: versioning=(?<versioning>.+?))?\\s.+?_version: \"(?<currentValue>.+?)\"\\s"
+      ]
+    },
+    {
+      "customType": "regex",
       "fileMatch": ["(^|/)\\.pre-commit-config\\.ya?ml$"],
       "matchStrings": [
-        "# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (?:lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[a-z-0-9]+?))?\\s+-\\s+[A-Za-z0-9_-]+?==(?<currentValue>.+?)\\s"
+        "# renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)(?: packageName=(?<packageName>.+?))?(?: versioning=(?<versioning>.+?))?\\s+-\\s+.+?==(?<currentValue>.+?)\\s"
       ]
     },
     {
       "customType": "regex",
       "fileMatch": ["(^|/)netlify\\.toml$"],
       "matchStrings": [
-        "# renovate: datasource=(?<datasource>[a-z-.]+?) depName=(?<depName>[^\\s]+?)(?: (?:lookupName|packageName)=(?<packageName>[^\\s]+?))?\\s.+?_VERSION = \"(?<currentValue>.+?)\"\\s"
+        "# renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)(?: packageName=(?<packageName>.+?))?\\s.+?_VERSION = \"(?<currentValue>.+?)\"\\s"
       ]
     }
   ],
