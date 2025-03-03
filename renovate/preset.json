@@ -43,10 +43,7 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": [
-        "/defaults/main\\.ya?ml$",
-        "/(host|group)_vars/\\w+\\.ya?ml$"
-      ],
+      "fileMatch": ["defaults/.+?\\.ya?ml$", "vars/.+?\\.ya?ml$"],
       "matchStrings": [
         "# renovate: datasource=(?<datasource>.+?) depName=(?<depName>.+?)(?: packageName=(?<packageName>.+?))?(?: versioning=(?<versioning>.+?))?\\s.+?_version: \"(?<currentValue>.+?)\"\\s"
       ]
