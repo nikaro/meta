@@ -27,8 +27,6 @@
     {
       "groupName": "go packages",
       "matchManagers": ["gomod"],
-      "matchDepTypes": ["require", "indirect"],
-      "enabled": true,
       "postUpdateOptions": ["gomodTidy"]
     },
     {
