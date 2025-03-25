@@ -6,12 +6,13 @@
     "config:recommended",
     "customManagers:dockerfileVersions",
     "customManagers:githubActionsVersions",
+    "helpers:pinGitHubActionDigests",
     ":configMigration",
     ":disableDependencyDashboard",
     ":disableRateLimiting",
     ":enablePreCommit",
     ":maintainLockFilesWeekly",
-    ":semanticCommitTypeAll(fix)"
+    ":semanticPrefixFixDepsChoreOthers"
   ],
   "packageRules": [
     {
