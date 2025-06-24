@@ -86,5 +86,5 @@ tasks:
       - ./**/*.yml
       - ./**/*.yaml
     cmds:
-      - fd --hidden --extension yaml --extension yml | xargs --no-run-if-empty prettier --check --parser yaml
+      - fd --hidden --extension yaml --extension yml | xargs --no-run-if-empty yamlfmt -lint
       - fd --hidden --extension yaml --extension yml | xargs --no-run-if-empty yamllint
