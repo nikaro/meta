@@ -8,14 +8,10 @@
     "nikaro/actions",
     "nikaro/blog",
     "nikaro/containers",
-    "nikaro/goresume",
     "nikaro/meta",
     "nikaro/neverwin",
     "nikaro/resume",
-    "nikaro/sopsy",
-    "nikaro/supwatch",
-    "nikaro/wirelogd",
-    "nikaro/zabbixmon"
+    "nikaro/sopsy"
   ],
   "requireConfig": "optional"
 }
